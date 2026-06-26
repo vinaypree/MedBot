@@ -21,7 +21,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 
-# Load embedding model (HuggingFace)
+# Load Hugging Face embeddings
 embeddings = download_hugging_face_embeddings()
 
 # Pinecone Index
@@ -80,8 +80,8 @@ def chat():
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
     app.run(
         host="0.0.0.0",
-        port=8080,
-        debug=True
+        port=port
     )
